@@ -18,6 +18,11 @@
     "user_name": "nodeNinja",
     "email": "node.ninja@example.com",
     "password": "strongPassword"
+  },
+  {
+    "user_name": "ex",
+    "email": "ex",
+    "password": "ex"
   }
 ]
 

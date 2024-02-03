@@ -38,11 +38,18 @@ router.get('/post/:id', async (req, res) => {
       ],
     });
 
+    // Check if the post exists
+    if (!postData) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
+
     const post = postData.get({ plain: true });
+    const user = post.user;
 
     res.render('post', {
-      ...post,
-      logged_in: req.session.logged_in
+      post,
+      user,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
