@@ -1,0 +1,28 @@
+[
+  {
+    "title": "Understanding the Basics of React Hooks",
+    "body": "React Hooks provide a way to use state and side-effects in functional components...",
+    "date_created": "2024-02-01T12:00:00Z",
+    "user_name": "techEnthusiast"
+  },
+  {
+    "title": "Getting Started with Python Flask for Web Development",
+    "body": "Python Flask is a lightweight web framework that simplifies web development...",
+    "date_created": "2024-02-02T14:30:00Z",
+    "user_name": "pythonDev"
+  },
+  {
+    "title": "Introduction to Machine Learning: A Beginner's Guide",
+    "body": "Machine Learning is a fascinating field that empowers computers to learn from data...",
+    "date_created": "2024-02-03T10:15:00Z",
+    "user_name": "mlExplorer"
+  },
+  {
+    "title": "Building a RESTful API with Node.js and Express",
+    "body": "Node.js and Express make it easy to create robust and scalable RESTful APIs...",
+    "date_created": "2024-02-04T16:45:00Z",
+    "user_name": "nodeNinja"
+  }
+]
+
+

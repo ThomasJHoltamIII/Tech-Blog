@@ -1,0 +1,23 @@
+[
+  {
+    "user_name": "techEnthusiast",
+    "email": "tech.enthusiast@example.com",
+    "password": "password123"
+  },
+  {
+    "user_name": "pythonDev",
+    "email": "python.dev@example.com",
+    "password": "securePassword"
+  },
+  {
+    "user_name": "mlExplorer",
+    "email": "ml.explorer@example.com",
+    "password": "12345678"
+  },
+  {
+    "user_name": "nodeNinja",
+    "email": "node.ninja@example.com",
+    "password": "strongPassword"
+  }
+]
+
