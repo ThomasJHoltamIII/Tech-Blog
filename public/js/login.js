@@ -1,3 +1,5 @@
+// const userRoute = require(`../../controllers/api/userRoutes`)
+
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
@@ -30,9 +32,10 @@ const signupFormHandler = async (event) => {
   const password = document.querySelector('#password-signup').value.trim();
 
   if (name && email && password) {
+    console.log(`made it to login.js`)
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ user_name: name, email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
 
