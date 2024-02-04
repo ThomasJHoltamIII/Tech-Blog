@@ -1,4 +1,3 @@
-// const userRoute = require(`../../controllers/api/userRoutes`)
 
 const loginFormHandler = async (event) => {
   event.preventDefault();
@@ -16,7 +15,13 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      // If successful, redirect the browser to the profile page
+      const newResponse = await fetch('/api/users/login', {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      if (newResponse.ok)
       document.location.replace('/profile');
     } else {
       alert(response.statusText);
@@ -40,6 +45,13 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
+      const newResponse = await fetch('/api/users/login', {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      if (newResponse.ok)
       document.location.replace('/profile');
     } else {
       alert(response.statusText);
