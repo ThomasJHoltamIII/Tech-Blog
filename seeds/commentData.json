@@ -1,0 +1,47 @@
+[
+  {
+    "comment_body": "This topic is absolutely fascinating, can't wait to see more!",
+    "user_id": 1,
+    "post_id": 1
+  },
+  {
+    "comment_body": "Does anyone have additional resources on this?",
+    "user_id": 2,
+    "post_id": 2
+  },
+  {
+    "comment_body": "I'm implementing a similar project and found this very useful.",
+    "user_id": 3,
+    "post_id": 3
+  },
+  {
+    "comment_body": "How does this approach compare to others in performance terms?",
+    "user_id": 4,
+    "post_id": 4
+  },
+  {
+    "comment_body": "Looking forward to more posts like this.",
+    "user_id": 1,
+    "post_id": 2
+  },
+  {
+    "comment_body": "I found a typo in the third paragraph, who can I report this to?",
+    "user_id": 2,
+    "post_id": 1
+  },
+  {
+    "comment_body": "Could this technique be used in other fields?",
+    "user_id": 3,
+    "post_id": 2
+  },
+  {
+    "comment_body": "I'm a bit confused about the methodology used here, can someone explain?",
+    "user_id": 4,
+    "post_id": 3
+  }
+]
+
+
+
+
+
