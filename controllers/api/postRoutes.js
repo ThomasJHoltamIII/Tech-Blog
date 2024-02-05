@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Post, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// Route to create a new post
 router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
@@ -11,11 +12,13 @@ router.post('/', withAuth, async (req, res) => {
 
     res.status(200).json(newPost);
   } catch (err) {
-    res.status(400).json(err)
+    res.status(400).json(err);
     console.log(err);
   }
 });
 
+// Route to update an existing post by id
+// Full intergration not yet added
 router.put('/:id', withAuth, async (req, res) => {
   try {
     const updatedPost = await Post.update(
@@ -42,7 +45,8 @@ router.put('/:id', withAuth, async (req, res) => {
   }
 });
 
-
+// Route to get a single post by id including its comments and user info
+// Comments not yet working
 router.get("/:id", async (req, res) => {
   if (!req.session.loggedIn) {
       res.redirect("/login");
@@ -64,7 +68,7 @@ router.get("/:id", async (req, res) => {
               ],
           });
           if (postData) {
-            console.log('hello!', postData)
+            console.log('hello!', postData);
               const post = postData.get({plain: true});
               res.render("post", {
                 post,
@@ -80,7 +84,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-
+// Route to delete a post by id
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.destroy({

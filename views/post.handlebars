@@ -1,43 +1,52 @@
+<!-- Post details display -->
 <div class="text-center">
   <h2>{{post.title}}</h2>
   <p>{{post.body}}</p>
+  <!-- Display post creator and creation date -->
   <p>Created by {{post.user.user_name}} on {{format_date post.date_created}}</p>
 </div>
-  {{#if comments.length}}
+
+<!-- Conditionally display comments section if comments exist -->
+{{#if comments.length}}
   <div class="col-md-6 post-list">
     <h3>Comments:</h3>
 
+    <!-- Loop through each comment and display -->
     {{#each comment as |comment|}}
     <div class="row mb-2">
       <div class="col-md-8">
+        <!-- Comment title with link to comment detail page -->
         <h4><a href="/post/{{comment.id}}">{{comment.title}}</a></h4>
       </div>
       <div class="col-md-4">
+        <!-- Delete button for each comment -->
         <button class="btn btn-sm btn-danger" post-id="{{comment.id}}">DELETE</button>
-
       </div>
     </div>
     {{/each}}
   </div>
-  {{/if}}
-</div>
-      {{#if logged_in}}
+{{/if}}
+
+<!-- Display comment form only if the user is logged in -->
+{{#if logged_in}}
 <div class="row mt-4">
   <div class="col-md-6">
     <h3>Comment:</h3>
 
+    <!-- Form for submitting a new comment -->
     <form class="form new-post-form">
       <div class="form-group">
+        <!-- Input for new comment text -->
         <input class="form-input" type="text" id="comment" name="comment" />
       </div>
       <div class="form-group">
+        <!-- Submit button for the comment form -->
         <button type="submit" class="btn btn-primary">Post</button>
       </div>
     </form>
   </div>
-      {{/if}}
+{{/if}}
 
-
-
-
+<!-- Link to the JavaScript file that for profile interactions -->
 <script src="./js/profile.js"></script>
+
