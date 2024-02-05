@@ -24,12 +24,14 @@ const newFormHandler = async (event) => {
 const newCommentHandler = async (event) => {
   event.preventDefault();
 
-  const comment = document.querySelector('#comment').value.trim();
+  
+  const postId = event.target.getAttribute('data-post-id');
+  const commentText = document.querySelector('#comment').value.trim();
 
-  if ( comment ) {
-    const response = await fetch(`/api/posts`, {
+  if (commentText) {
+    const response = await fetch(`/api/comments`, { 
       method: 'POST',
-      body: JSON.stringify({ title, body }),
+      body: JSON.stringify({ commentText, postId }), 
       headers: {
         'Content-Type': 'application/json',
       },
@@ -42,6 +44,22 @@ const newCommentHandler = async (event) => {
     }
   }
 };
+
+// const editButtonHandler = async (event) => {
+//   if (event.target.hasAttribute('post-id-edit')) {
+//     const id = event.target.getAttribute('post-id-edit');
+
+//     const response = await fetch(`/api/posts/${id}`, {
+//       method: 'PUT',
+//     });
+
+//     if (response.ok) {
+//       document.location.replace('/profile');
+//     } else {
+//       alert('Failed to edit post');
+//     }
+//   }
+// };
 
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('post-id')) {
@@ -59,14 +77,18 @@ const delButtonHandler = async (event) => {
   }
 };
 
-document
-  .querySelector('.comment')
-  .addEventListener('comment', newCommentHandler);
+if (document.querySelector('#postComment')) {
+  document.querySelector('#postComment').addEventListener('click', newCommentHandler);
+}
 
-document
-  .querySelector('.new-post-form')
-  .addEventListener('submit', newFormHandler);
 
-document
-  .querySelector('.post-list')
-  .addEventListener('click', delButtonHandler);
+if (document.querySelector('.new-post-form')) {
+  document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+}
+
+document.addEventListener('click', function(event) {
+  if (event.target && event.target.matches("button[post-id]")) {
+    delButtonHandler(event);
+  }
+});
+

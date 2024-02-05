@@ -16,17 +16,67 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-router.post('/:id/comment', withAuth, async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
   try {
-    const newComment = await Comment.create({
-      ...req.body,
-      user_id: req.session.user_id,
-    });
+    const updatedPost = await Post.update(
+      {
+        title: req.body.title,
+        body: req.body.body,
+      },
+      {
+        where: {
+          id: req.params.id,
+          user_id: req.session.user_id,
+        },
+      }
+    );
 
-    res.status(200).json(newComment);
+    if (updatedPost[0] > 0) {
+      res.status(200).json({ message: 'Post updated successfully' });
+    } else {
+      res.status(404).json({ message: 'Cannot update post' });
+    }
   } catch (err) {
-    res.status(400).json(err)
-    console.log(err);
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
+
+
+router.get("/:id", async (req, res) => {
+  if (!req.session.loggedIn) {
+      res.redirect("/login");
+  } else {
+      try {
+          const postData = await Post.findByPk(req.params.id, {
+              include: [
+                  {
+                      model: User,
+                      attributes: ["user_name"]
+                  },
+                  {
+                      model: Comment,
+                      include: {
+                          model: User,
+                          attributes: ["comment_body"]
+                      }
+                  },
+              ],
+          });
+          if (postData) {
+            console.log('hello!', postData)
+              const post = postData.get({plain: true});
+              res.render("post", {
+                post,
+                loggedIn: req.session.loggedIn
+              });
+          } else {
+              res.status(404)
+          }
+      } catch (error) {
+          console.error(error);
+          res.status(500).send("Internal Server Error");
+      }
   }
 });
 
